@@ -1,26 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      username: '',
+      password: ''
+    }
+  }
+
+  handleUsernameChange = (val) => {
+    this.setState({ username: val})
+  }
+  handlePasswordChange = (val) => {
+    this.setState({ password: val})
+  }
+  loginAlert = () => {
+    alert(`Username: ${this.state.username} Password: ${this.state.password}`)
+  }
+
+  render(){
+    return (
+      <div className="App">
+        <input onChange={ev => this.handleUsernameChange(ev.target.value)}/>
+        <input onChange={ev => this.handlePasswordChange(ev.target.value)}/>
+        <button onClick={this.loginAlert}>Login</button>
+      </div>
+    )
+  }
+    
 }
 
 export default App;
